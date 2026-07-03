@@ -321,7 +321,110 @@ export default function AdminPage() {
             </div>
           </div>
 
-          <div className="overflow-x-auto">
+          <div className="grid gap-3 p-4 md:hidden">
+            {filteredJobs.map((job) => (
+              <article
+                key={job.id}
+                className="rounded-md border border-stone-200 bg-[oklch(99%_0.008_86)] p-4"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2">
+                      {job.isUrgent && <AlertTriangle className="shrink-0 text-red-700" size={18} />}
+                      <p className="font-black text-[oklch(31%_0.08_151)]">{job.id}</p>
+                    </div>
+                    <p className="mt-1 text-lg font-black text-stone-950">{job.customerName}</p>
+                    <p className="mt-1 text-sm font-semibold text-stone-600">{job.phone}</p>
+                  </div>
+                  <span
+                    className={`shrink-0 rounded-full px-3 py-1 text-xs font-black ${
+                      badgeStyles[job.status] ?? "bg-stone-200 text-stone-800"
+                    }`}
+                  >
+                    {job.status}
+                  </span>
+                </div>
+
+                <div className="mt-4 grid grid-cols-2 gap-3 text-sm">
+                  <div>
+                    <p className="text-xs font-black uppercase text-stone-500">Service</p>
+                    <p className="mt-1 font-bold text-stone-900">{job.serviceType}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-black uppercase text-stone-500">Province</p>
+                    <p className="mt-1 font-bold text-stone-900">{job.province}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-black uppercase text-stone-500">Budget</p>
+                    <p className="mt-1 font-bold text-stone-900">{job.budget}</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-black uppercase text-stone-500">Created</p>
+                    <p className="mt-1 font-bold text-stone-900">{job.createdDate}</p>
+                  </div>
+                </div>
+
+                <div className="mt-4 grid gap-3">
+                  <label className="grid gap-2 text-sm font-black text-stone-800">
+                    สถานะงาน
+                    <select
+                      className="field py-3 text-sm font-bold"
+                      value={job.status}
+                      onChange={(event) =>
+                        patchJob(job.id, { status: event.target.value as JobStatus })
+                      }
+                    >
+                      {adminStatusBadges.map((status) => (
+                        <option key={status}>{status}</option>
+                      ))}
+                    </select>
+                  </label>
+
+                  <label className="grid gap-2 text-sm font-black text-stone-800">
+                    บันทึกนัดสำรวจ
+                    <textarea
+                      className="field min-h-20 resize-y text-sm"
+                      value={job.surveyNote}
+                      onChange={(event) => patchJob(job.id, { surveyNote: event.target.value })}
+                      placeholder="บันทึกนัดสำรวจที่ลูกค้าเห็นได้"
+                    />
+                  </label>
+
+                  <label className="grid gap-2 text-sm font-black text-stone-800">
+                    บันทึกภายใน
+                    <textarea
+                      className="field min-h-20 resize-y text-sm"
+                      value={job.internalNote}
+                      onChange={(event) => patchJob(job.id, { internalNote: event.target.value })}
+                      placeholder="บันทึกภายใน ไม่แสดงให้ลูกค้าเห็น"
+                    />
+                  </label>
+                </div>
+
+                <div className="mt-4 flex items-center justify-between gap-3">
+                  <label className="flex items-center gap-2 text-sm font-black text-stone-700">
+                    <input
+                      className="size-4 accent-[oklch(31%_0.08_151)]"
+                      type="checkbox"
+                      checked={job.isUrgent}
+                      onChange={(event) => patchJob(job.id, { isUrgent: event.target.checked })}
+                    />
+                    เร่งด่วน
+                  </label>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedJob(job)}
+                    className="inline-flex min-h-11 items-center gap-2 rounded-md bg-stone-950 px-4 text-sm font-black text-[oklch(98%_0.014_86)]"
+                  >
+                    <Eye size={16} />
+                    ดูงาน
+                  </button>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="hidden overflow-x-auto md:block">
             <table className="w-full min-w-[1320px] border-collapse text-left text-sm">
               <thead className="bg-stone-100 text-xs font-black uppercase text-stone-600">
                 <tr>
