@@ -20,7 +20,6 @@ import {
   Paintbrush,
   PanelsTopLeft,
   ReceiptText,
-  Search,
   ShieldCheck,
   Star,
   ThumbsUp,
@@ -181,99 +180,88 @@ const trustBadges = [
 export default function HomePage() {
   return (
     <main>
-      <section className="relative overflow-hidden px-4 pb-24 pt-8 sm:px-6 lg:pb-28 lg:pt-12">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,oklch(84%_0.12_76_/_0.25),transparent_32%),linear-gradient(135deg,oklch(98%_0.014_86),oklch(93%_0.035_86))]" />
-        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.04fr_0.96fr] lg:items-center">
-          <div>
-            <p className="inline-flex rounded-full bg-[oklch(86%_0.09_151)] px-4 py-2 text-sm font-black text-[oklch(24%_0.07_151)]">
-              ศูนย์รวมช่างซ่อมบ้านที่ไว้ใจได้
-            </p>
-            <h1 className="mt-5 max-w-3xl text-4xl font-black leading-tight tracking-tight text-stone-950 sm:text-5xl lg:text-6xl">
-              เรื่องซ่อมบ้าน รีโนเวท ต่อเติม ให้ไว้ใจช่างดูแล
-            </h1>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-stone-700">
-              นัดสำรวจงานง่าย ทีมช่างสื่อสารชัด แจ้งราคาก่อนเริ่ม
-              และติดตามสถานะงานได้จากมือถือ
-            </p>
+      <section className="relative overflow-hidden px-4 pb-24 pt-5 sm:px-6 lg:pb-28 lg:pt-8">
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,oklch(96%_0.018_86),oklch(99%_0.004_86))]" />
+        <div className="mx-auto max-w-7xl">
+          <div className="relative isolate overflow-hidden rounded-[2rem] bg-[oklch(30%_0.09_236)] px-5 py-7 text-[oklch(98%_0.014_86)] shadow-[0_28px_85px_oklch(42%_0.045_76_/_0.22)] sm:px-8 lg:min-h-[430px] lg:px-12 lg:py-10">
+            <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_18%_10%,oklch(84%_0.08_230_/_0.45),transparent_34%),radial-gradient(circle_at_82%_30%,oklch(68%_0.11_236_/_0.35),transparent_28%),linear-gradient(135deg,oklch(42%_0.11_236),oklch(21%_0.06_236)_58%,oklch(18%_0.05_151))]" />
+            <div className="absolute inset-0 -z-10 opacity-35 [background-image:linear-gradient(115deg,transparent_0_46%,oklch(98%_0.014_86_/_0.2)_47%,transparent_48%_100%),linear-gradient(100deg,transparent_0_58%,oklch(84%_0.12_76_/_0.24)_59%,transparent_60%_100%)] [background-size:120px_120px,190px_190px]" />
 
-            <form className="mt-6 flex max-w-2xl items-center rounded-2xl border border-stone-300 bg-[oklch(99%_0.008_86)] p-1 shadow-[0_16px_45px_oklch(42%_0.045_76_/_0.12)]">
-              <Search className="ml-3 shrink-0 text-stone-500" size={20} />
-              <input
-                className="min-w-0 flex-1 bg-transparent px-3 py-3 text-sm font-semibold text-stone-800 outline-none placeholder:text-stone-400"
-                placeholder="ค้นหาบริการ เช่น ซ่อมไฟ รั่วซึม รีโนเวท"
-                aria-label="ค้นหาบริการ"
-              />
-              <button
-                type="submit"
-                className="rounded-xl bg-[oklch(84%_0.12_76)] px-4 py-3 text-sm font-black text-stone-950"
-              >
-                ค้นหา
-              </button>
-            </form>
+            <div className="grid gap-7 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+              <div>
+                <p className="inline-flex rounded-full bg-[oklch(98%_0.014_86_/_0.92)] px-4 py-2 text-sm font-black text-[oklch(30%_0.09_236)]">
+                  โปรสำรวจหน้างานสำหรับเจ้าของบ้าน
+                </p>
+                <h1 className="mt-5 max-w-3xl text-5xl font-black leading-[0.96] tracking-tight sm:text-6xl lg:text-7xl">
+                  ซ่อมบ้าน รีโนเวท ต่อเติม
+                  <span className="block text-[oklch(70%_0.18_35)]">ให้ไว้ใจช่างดูแล</span>
+                </h1>
+                <p className="mt-5 max-w-2xl text-lg font-bold leading-8 text-blue-50">
+                  งานหลังคารั่ว ระบบไฟ ประปา ห้องน้ำ ครัว และรีโนเวท
+                  นัดสำรวจง่าย แจ้งราคาก่อนเริ่มงาน
+                </p>
 
-            <div className="mt-6 grid gap-3 sm:flex sm:flex-wrap">
-              <Link
-                href="/request"
-                className="inline-flex min-h-14 items-center justify-center gap-2 rounded-xl bg-[oklch(31%_0.08_151)] px-5 py-3 text-base font-black text-[oklch(98%_0.014_86)]"
-              >
-                นัดสำรวจงาน
-                <ArrowRight size={18} />
-              </Link>
-              <a
-                href={brand.lineChatUrl}
-                className="inline-flex min-h-14 items-center justify-center gap-2 rounded-xl border border-stone-300 bg-stone-100 px-5 py-3 text-base font-black text-stone-950"
-              >
-                <MessageCircle size={18} />
-                แชท LINE
-              </a>
-              <a
-                href={`tel:${brand.phone}`}
-                className="inline-flex min-h-14 items-center justify-center gap-2 rounded-xl border border-stone-300 bg-stone-100 px-5 py-3 text-base font-black text-stone-950"
-              >
-                {brand.phone}
-              </a>
+                <div className="mt-6 grid gap-4 sm:grid-cols-[220px_1fr] sm:items-center">
+                  <div className="rounded-3xl bg-[oklch(98%_0.014_86)] p-4 text-stone-950 shadow-[0_18px_48px_oklch(15%_0.04_236_/_0.28)]">
+                    <p className="text-sm font-black text-[oklch(30%_0.09_236)]">ค่าสำรวจ เริ่มเพียง</p>
+                    <p className="mt-1 text-6xl font-black leading-none text-[oklch(62%_0.19_35)]">
+                      699.-
+                    </p>
+                    <div className="mt-3 inline-flex overflow-hidden rounded-xl border border-stone-200 text-sm font-black">
+                      <span className="bg-[oklch(62%_0.19_35)] px-3 py-2 text-white">CODE</span>
+                      <span className="px-3 py-2 text-[oklch(30%_0.09_236)]">WAIJAI100</span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className="grid gap-3 sm:flex sm:flex-wrap">
+                      <Link
+                        href="/request"
+                        className="inline-flex min-h-14 items-center justify-center gap-2 rounded-xl bg-[oklch(84%_0.12_76)] px-5 py-3 text-base font-black text-stone-950"
+                      >
+                        นัดสำรวจงาน
+                        <ArrowRight size={18} />
+                      </Link>
+                      <a
+                        href={brand.lineChatUrl}
+                        className="inline-flex min-h-14 items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 px-5 py-3 text-base font-black text-white"
+                      >
+                        <MessageCircle size={18} />
+                        แชท LINE
+                      </a>
+                      <a
+                        href={`tel:${brand.phone}`}
+                        className="inline-flex min-h-14 items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 px-5 py-3 text-base font-black text-white"
+                      >
+                        {brand.phone}
+                      </a>
+                    </div>
+                    <p className="mt-3 text-xs font-bold text-blue-100">
+                      *โปรโมชันตัวอย่างสำหรับช่วงเปิดระบบ เงื่อนไขเป็นไปตามที่บริษัทกำหนด
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative min-h-[280px] lg:min-h-[370px]">
+                <div className="absolute inset-x-0 bottom-0 overflow-hidden rounded-[2rem] border border-white/20 bg-white/10 shadow-[0_24px_80px_oklch(15%_0.04_236_/_0.28)]">
+                  <Image
+                    src="/images/trust-build-hero.png"
+                    alt="ทีมช่างไว้ใจช่างพร้อมสำรวจหน้างาน"
+                    width={1536}
+                    height={1024}
+                    priority
+                    className="aspect-[4/3] h-auto w-full object-cover"
+                  />
+                </div>
+                <div className="absolute right-2 top-3 rounded-2xl bg-[oklch(98%_0.014_86)] px-4 py-3 text-sm font-black text-[oklch(30%_0.09_236)] shadow-xl">
+                  โดยทีมช่างคัดกรอง
+                </div>
+                <div className="absolute bottom-4 left-4 rounded-2xl bg-[oklch(98%_0.014_86)] px-4 py-3 text-sm font-black text-[oklch(30%_0.09_236)] shadow-xl">
+                  ติดตามสถานะผ่านมือถือ
+                </div>
+              </div>
             </div>
-
-            <div className="mt-6 flex flex-wrap gap-2">
-              {trustBadges.map((item) => (
-                <span
-                  key={item}
-                  className="inline-flex items-center gap-2 rounded-full bg-[oklch(99%_0.008_86)] px-4 py-2 text-sm font-black text-[oklch(31%_0.08_151)] shadow-sm"
-                >
-                  <CheckCircle2 size={16} />
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="relative">
-            <div className="overflow-hidden rounded-3xl border border-stone-300 bg-stone-100 shadow-[0_24px_80px_oklch(42%_0.045_76_/_0.2)]">
-              <Image
-                src="/images/trust-build-hero.png"
-                alt="ทีมช่างไว้ใจช่าง นัดสำรวจหน้างานกับเจ้าของบ้าน"
-                width={1536}
-                height={1024}
-                priority
-                className="aspect-[4/3] h-auto w-full object-cover"
-              />
-            </div>
-            {["ติดต่อกลับภายใน 15 นาที", "รับประกันงานตามเงื่อนไข", "ติดตามสถานะผ่านมือถือ"].map(
-              (item, index) => (
-                <span
-                  key={item}
-                  className={`absolute left-4 rounded-2xl border border-stone-200 bg-[oklch(99%_0.008_86)] px-4 py-3 text-sm font-black text-stone-900 shadow-[0_14px_35px_oklch(42%_0.045_76_/_0.16)] ${
-                    index === 0
-                      ? "top-4"
-                      : index === 1
-                        ? "bottom-4"
-                        : "right-4 top-1/2 left-auto hidden -translate-y-1/2 sm:block"
-                  }`}
-                >
-                  {item}
-                </span>
-              ),
-            )}
           </div>
         </div>
 
