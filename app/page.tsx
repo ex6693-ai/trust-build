@@ -305,27 +305,35 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section id="services" className="px-4 pb-14 pt-20 sm:px-6 sm:pt-24">
+      <section id="services" className="bg-[oklch(99%_0.004_86)] px-4 pb-16 pt-20 sm:px-6 sm:pt-24">
         <div className="mx-auto max-w-7xl">
-          <SectionHeading
-            eyebrow="บริการของเรา"
-            title="ศูนย์รวมบริการช่างดูแลบ้านครบวงจร"
-            subtitle="เลือกบริการที่ต้องการ แล้วส่งรายละเอียดให้ทีมงานติดต่อกลับเพื่อนัดสำรวจ"
-          />
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-black text-[oklch(43%_0.13_76)]">
+              ศูนย์รวมบริการช่าง
+            </p>
+            <h2 className="mt-4 text-4xl font-black tracking-tight text-stone-950 sm:text-5xl">
+              ไว้ใจช่าง{" "}
+              <span className="text-[oklch(56%_0.15_35)]">ตัวกลางหาช่างคุณภาพ</span>
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-base font-semibold leading-8 text-stone-600">
+              ศูนย์รวมช่างคุณภาพและบริการดูแลบ้านครบวงจร นัดสำรวจง่าย
+              แจ้งราคาก่อนเริ่ม และติดตามสถานะงานผ่านมือถือ
+            </p>
+          </div>
 
-          <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+          <div className="mx-auto mt-12 grid max-w-6xl grid-cols-3 gap-x-3 gap-y-8 sm:grid-cols-4 lg:grid-cols-6">
             {serviceCategories.map((item) => {
               const Icon = item.icon;
               return (
                 <Link
                   key={item.title}
                   href={`/request?service=${encodeURIComponent(item.title)}`}
-                  className="group rounded-3xl border border-stone-200 bg-[oklch(99%_0.008_86)] p-4 text-center shadow-[0_12px_32px_oklch(42%_0.045_76_/_0.08)] transition hover:-translate-y-1 hover:border-[oklch(56%_0.15_76)] hover:shadow-[0_18px_45px_oklch(42%_0.045_76_/_0.12)]"
+                  className="group text-center"
                 >
-                  <span className="mx-auto grid size-14 place-items-center rounded-full bg-[oklch(84%_0.12_76)] text-[oklch(24%_0.07_151)]">
-                    <Icon size={25} />
+                  <span className="mx-auto grid size-20 place-items-center rounded-full bg-[oklch(96%_0.012_86)] text-[oklch(31%_0.08_151)] shadow-[0_10px_28px_oklch(42%_0.045_76_/_0.08)] ring-1 ring-stone-200 transition group-hover:-translate-y-1 group-hover:bg-[oklch(84%_0.12_76)] group-hover:text-[oklch(20%_0.05_151)] group-hover:shadow-[0_16px_36px_oklch(42%_0.045_76_/_0.14)]">
+                    <Icon size={30} strokeWidth={2.2} />
                   </span>
-                  <span className="mt-3 block text-sm font-black leading-6 text-stone-900">
+                  <span className="mx-auto mt-4 block max-w-32 text-sm font-bold leading-6 text-[oklch(29%_0.06_230)] transition group-hover:text-[oklch(31%_0.08_151)]">
                     {item.title}
                   </span>
                 </Link>
