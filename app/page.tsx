@@ -4,13 +4,14 @@ import Link from "next/link";
 import {
   ArrowRight,
   BriefcaseBusiness,
+  CheckCircle2,
   ClipboardList,
   Home,
   Images,
   MessageCircle,
   SearchCheck,
 } from "lucide-react";
-import { brand, serviceSteps, services } from "@/components/site-data";
+import { brand, services } from "@/components/site-data";
 
 export const metadata: Metadata = {
   title: "ไว้ใจช่าง | ช่างซ่อม รีโนเวท ต่อเติม ที่ไว้ใจได้",
@@ -20,34 +21,81 @@ export const metadata: Metadata = {
 
 const lineMenuLinks = [
   {
-    label: "นัดสำรวจงาน",
+    title: "นัดสำรวจงาน",
+    description: "ส่งรายละเอียดงานและรูปหน้างานให้ทีมงานประเมินเบื้องต้น",
     href: "/request",
-    displayUrl: "https://yourdomain.com/request",
     icon: SearchCheck,
   },
   {
-    label: "ติดตามงาน",
+    title: "ติดตามสถานะ",
+    description: "ดูความคืบหน้างาน นัดหมาย และขั้นตอนถัดไป",
     href: "/track",
-    displayUrl: "https://yourdomain.com/track",
     icon: ClipboardList,
   },
   {
-    label: "บริการทั้งหมด",
+    title: "บริการทั้งหมด",
+    description: "ดูหมวดงานซ่อม รีโนเวท ต่อเติม และงานระบบ",
     href: "/services",
-    displayUrl: "https://yourdomain.com/services",
     icon: BriefcaseBusiness,
   },
   {
-    label: "ผลงานที่ผ่านมา",
+    title: "ผลงานที่ผ่านมา",
+    description: "ดูตัวอย่างงานจริง ก่อนหลัง และประเภทงานที่เคยทำ",
     href: "/portfolio",
-    displayUrl: "https://yourdomain.com/portfolio",
     icon: Images,
   },
   {
-    label: "ติดต่อทีมงาน",
+    title: "แชทกับทีมงาน",
+    description: "สอบถามรายละเอียดหรือขอให้ทีมงานติดต่อกลับ",
     href: brand.lineChatUrl,
-    displayUrl: "LINE Chat",
     icon: MessageCircle,
+  },
+];
+
+const trustBadges = [
+  "ช่างผ่านการคัดกรอง",
+  "แจ้งราคาก่อนเริ่มงาน",
+  "ติดตามสถานะผ่าน LINE",
+  "กรุงเทพและปริมณฑล",
+];
+
+const processChecklist = [
+  "ประเมินเบื้องต้นจากรูปหน้างาน",
+  "นัดหมายตามเวลาที่สะดวก",
+  "แจ้งขอบเขตงานและราคาก่อนเริ่ม",
+  "ติดตามความคืบหน้าผ่านมือถือ",
+];
+
+const processSteps = [
+  {
+    number: "1",
+    title: "ส่งข้อมูล",
+    description: "แจ้งประเภทงาน พื้นที่ และแนบรูปหน้างาน",
+    status: "เริ่มต้นง่าย",
+  },
+  {
+    number: "2",
+    title: "นัดสำรวจ",
+    description: "ทีมงานติดต่อกลับเพื่อนัดเวลาที่สะดวก",
+    status: "ทีมงานติดต่อกลับ",
+  },
+  {
+    number: "3",
+    title: "เสนอราคา",
+    description: "รับใบเสนอราคาพร้อมขอบเขตงานชัดเจน",
+    status: "โปร่งใส",
+  },
+  {
+    number: "4",
+    title: "เริ่มงาน",
+    description: "เริ่มงานตามคิว พร้อมอัปเดตความคืบหน้า",
+    status: "ติดตามได้",
+  },
+  {
+    number: "5",
+    title: "ส่งมอบ",
+    description: "ตรวจรับงานและรับคำแนะนำหลังส่งมอบ",
+    status: "จบงานมั่นใจ",
   },
 ];
 
@@ -102,37 +150,44 @@ export default function HomePage() {
       <section className="section-band px-4 py-11 sm:px-6 sm:py-14">
         <div className="mx-auto max-w-6xl">
           <div className="max-w-2xl">
-            <p className="text-sm font-black text-[oklch(43%_0.13_76)]">เมนูลัดสำหรับ LINE</p>
+            <p className="text-sm font-black text-[oklch(43%_0.13_76)]">
+              เมนูลัดสำหรับลูกค้า
+            </p>
             <h2 className="mt-3 text-3xl font-black tracking-tight text-stone-950 sm:text-4xl">
-              ลิงก์หลักสำหรับ Rich Menu
+              ทุกอย่างจัดการได้ใน LINE
             </h2>
+            <p className="mt-4 text-base leading-8 text-stone-700">
+              นัดสำรวจ ติดตามสถานะ ดูบริการ และคุยกับทีมงานได้จากเมนูเดียว
+            </p>
           </div>
 
-          <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {lineMenuLinks.map((item) => {
               const Icon = item.icon;
               const isExternal = item.href.startsWith("http");
+              const cardClass =
+                "group block rounded-2xl border border-[oklch(78%_0.08_76_/_0.55)] bg-[oklch(99%_0.01_86)] p-5 shadow-[0_14px_40px_oklch(42%_0.045_76_/_0.09)] transition hover:-translate-y-1 hover:shadow-[0_20px_55px_oklch(42%_0.045_76_/_0.14)]";
 
               const content = (
                 <>
-                  <span className="grid size-11 place-items-center rounded-md bg-[oklch(88%_0.08_76)] text-[oklch(31%_0.08_151)]">
-                    <Icon size={22} />
+                  <span className="grid size-12 place-items-center rounded-xl bg-[oklch(84%_0.12_76)] text-[oklch(24%_0.07_151)] transition group-hover:bg-[oklch(31%_0.08_151)] group-hover:text-[oklch(98%_0.014_86)]">
+                    <Icon size={23} />
                   </span>
-                  <span className="mt-4 block text-lg font-black text-stone-950">
-                    {item.label}
+                  <span className="mt-5 block text-lg font-black text-stone-950">
+                    {item.title}
                   </span>
-                  <span className="mt-2 block break-all text-xs font-bold leading-5 text-stone-600">
-                    {item.displayUrl}
+                  <span className="mt-2 block text-sm font-semibold leading-7 text-stone-600">
+                    {item.description}
                   </span>
                 </>
               );
 
               return isExternal ? (
-                <a key={item.label} href={item.href} className="card block p-5">
+                <a key={item.title} href={item.href} className={cardClass}>
                   {content}
                 </a>
               ) : (
-                <Link key={item.label} href={item.href} className="card block p-5">
+                <Link key={item.title} href={item.href} className={cardClass}>
                   {content}
                 </Link>
               );
@@ -141,76 +196,138 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="px-4 py-12 sm:px-6 sm:py-16">
+      <section
+        id="services"
+        className="relative overflow-hidden px-4 py-14 sm:px-6 sm:py-18"
+      >
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,oklch(88%_0.08_76_/_0.38),transparent_34%),radial-gradient(circle_at_bottom_right,oklch(82%_0.07_151_/_0.28),transparent_32%)]" />
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(oklch(90%_0.01_86_/_0.28)_1px,transparent_1px),linear-gradient(90deg,oklch(90%_0.01_86_/_0.28)_1px,transparent_1px)] bg-[size:34px_34px]" />
+
         <div className="mx-auto max-w-6xl">
-          <div className="max-w-2xl">
+          <div className="max-w-3xl">
             <p className="text-sm font-black text-[oklch(43%_0.13_76)]">บริการของเรา</p>
             <h2 className="mt-3 text-3xl font-black tracking-tight text-stone-950 sm:text-4xl">
               งานบ้านที่ต้องการช่างไว้ใจได้
             </h2>
+            <p className="mt-4 text-base leading-8 text-stone-700">
+              เลือกประเภทงานที่ต้องการ ส่งรายละเอียดและรูปหน้างาน
+              แล้วทีมงานจะติดต่อกลับเพื่อประเมินและนัดสำรวจ
+            </p>
           </div>
 
-          <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {services.map((service) => {
+          <div className="mt-6 flex flex-wrap gap-2">
+            {trustBadges.map((item) => (
+              <span
+                key={item}
+                className="inline-flex items-center gap-2 rounded-full border border-[oklch(77%_0.08_76_/_0.6)] bg-[oklch(96%_0.025_86)] px-4 py-2 text-sm font-black text-[oklch(31%_0.08_151)]"
+              >
+                <CheckCircle2 size={16} />
+                {item}
+              </span>
+            ))}
+          </div>
+
+          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {services.map((service, index) => {
               const Icon = service.icon;
+              const isHighlighted = index === 0;
+
               return (
-                <article key={service.title} className="card p-5">
-                  <div className="flex items-start gap-4">
-                    <span className="grid size-11 shrink-0 place-items-center rounded-md bg-[oklch(88%_0.08_76)] text-[oklch(31%_0.08_151)]">
-                      <Icon size={22} />
-                    </span>
-                    <div>
-                      <h3 className="text-lg font-black text-stone-950">{service.title}</h3>
-                      <p className="mt-2 text-sm leading-7 text-stone-700">{service.detail}</p>
-                    </div>
-                  </div>
-                </article>
+                <Link
+                  key={service.title}
+                  href={`/request?service=${encodeURIComponent(service.title)}`}
+                  className={`group rounded-3xl border border-[oklch(78%_0.08_76_/_0.45)] bg-[linear-gradient(145deg,oklch(99%_0.012_86),oklch(96%_0.025_86))] p-5 shadow-[0_16px_45px_oklch(42%_0.045_76_/_0.1)] transition hover:-translate-y-1 hover:border-[oklch(60%_0.12_76_/_0.7)] hover:shadow-[0_24px_65px_oklch(42%_0.045_76_/_0.16)] ${
+                    isHighlighted ? "md:col-span-2 xl:row-span-2" : ""
+                  }`}
+                >
+                  <span className="grid size-12 place-items-center rounded-2xl bg-[oklch(84%_0.12_76)] text-[oklch(24%_0.07_151)]">
+                    <Icon size={24} />
+                  </span>
+                  <h3
+                    className={`mt-5 font-black text-stone-950 ${
+                      isHighlighted ? "text-2xl" : "text-xl"
+                    }`}
+                  >
+                    {service.title}
+                  </h3>
+                  <p className="mt-3 text-sm font-semibold leading-7 text-stone-600">
+                    {service.detail}
+                  </p>
+                  <span className="mt-5 inline-flex items-center gap-2 text-sm font-black text-[oklch(31%_0.08_151)]">
+                    ดูรายละเอียด
+                    <ArrowRight size={16} />
+                  </span>
+                </Link>
               );
             })}
           </div>
         </div>
       </section>
 
-      <section className="section-band px-4 py-12 sm:px-6 sm:py-16">
-        <div className="mx-auto max-w-6xl">
-          <div className="grid gap-5 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
-            <div>
-              <p className="text-sm font-black text-[oklch(43%_0.13_76)]">
-                ขั้นตอนการใช้บริการ
-              </p>
-              <h2 className="mt-3 text-3xl font-black tracking-tight text-stone-950 sm:text-4xl">
-                เริ่มจากส่งข้อมูล จบที่ส่งมอบงาน
-              </h2>
-              <p className="mt-4 leading-8 text-stone-700">
-                ออกแบบให้เหมาะกับผู้ใช้จาก LINE Rich Menu:
-                อ่านเร็ว กดง่าย และรู้ทันทีว่าขั้นต่อไปคืออะไร
-              </p>
-            </div>
+      <section
+        id="process"
+        className="section-band px-4 py-14 sm:px-6 sm:py-18"
+      >
+        <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-start">
+          <div>
+            <p className="text-sm font-black text-[oklch(43%_0.13_76)]">
+              ขั้นตอนการใช้บริการ
+            </p>
+            <h2 className="mt-3 text-3xl font-black tracking-tight text-stone-950 sm:text-4xl">
+              เริ่มจากส่งข้อมูล จบที่ส่งมอบงาน
+            </h2>
+            <p className="mt-4 leading-8 text-stone-700">
+              ออกแบบให้เหมาะกับผู้ใช้จาก LINE Rich Menu:
+              อ่านเร็ว กดง่าย และรู้ทันทีว่าขั้นต่อไปคืออะไร
+            </p>
 
-            <div className="grid gap-3">
-              {serviceSteps.map((step, index) => (
-                <div
-                  key={step}
-                  className="flex items-center gap-4 rounded-lg border border-stone-200 bg-[oklch(99%_0.008_86)] p-4 shadow-[0_12px_30px_oklch(42%_0.045_76_/_0.08)]"
-                >
-                  <span className="grid size-11 shrink-0 place-items-center rounded-md bg-[oklch(31%_0.08_151)] text-base font-black text-[oklch(98%_0.014_86)]">
-                    {index + 1}
-                  </span>
-                  <div>
-                    <h3 className="text-lg font-black text-stone-950">{step}</h3>
-                    <p className="mt-1 text-sm font-semibold text-stone-600">
-                      {getStepDetail(index)}
-                    </p>
+            <div className="mt-6 rounded-3xl border border-[oklch(78%_0.08_76_/_0.5)] bg-[oklch(99%_0.01_86)] p-5 shadow-[0_16px_45px_oklch(42%_0.045_76_/_0.1)]">
+              <p className="text-sm font-black text-[oklch(31%_0.08_151)]">
+                สิ่งที่ลูกค้าได้รับ
+              </p>
+              <div className="mt-4 grid gap-3">
+                {processChecklist.map((item) => (
+                  <div key={item} className="flex items-start gap-3">
+                    <CheckCircle2
+                      className="mt-0.5 shrink-0 text-[oklch(43%_0.13_76)]"
+                      size={18}
+                    />
+                    <p className="text-sm font-bold leading-7 text-stone-700">{item}</p>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
+
+          <ol className="relative grid gap-4">
+            <span className="absolute bottom-8 left-6 top-8 hidden w-0.5 bg-[linear-gradient(oklch(84%_0.12_76),oklch(31%_0.08_151))] sm:block" />
+            {processSteps.map((step) => (
+              <li
+                key={step.number}
+                className="group relative grid gap-3 rounded-3xl border border-stone-200 bg-[oklch(99%_0.01_86)] p-5 shadow-[0_14px_40px_oklch(42%_0.045_76_/_0.09)] transition hover:-translate-y-1 hover:shadow-[0_22px_55px_oklch(42%_0.045_76_/_0.14)] sm:grid-cols-[52px_1fr]"
+              >
+                <span className="relative z-10 grid size-12 place-items-center rounded-2xl bg-[oklch(31%_0.08_151)] text-lg font-black text-[oklch(98%_0.014_86)]">
+                  {step.number}
+                </span>
+                <div>
+                  <div className="flex flex-wrap items-start justify-between gap-3">
+                    <h3 className="text-xl font-black text-stone-950">{step.title}</h3>
+                    <span className="rounded-full bg-[oklch(88%_0.08_76)] px-3 py-1 text-xs font-black text-[oklch(24%_0.07_151)]">
+                      {step.status}
+                    </span>
+                  </div>
+                  <p className="mt-2 text-sm font-semibold leading-7 text-stone-600">
+                    {step.description}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
       <section className="px-4 py-14 sm:px-6 sm:py-16">
-        <div className="mx-auto rounded-lg bg-[oklch(31%_0.08_151)] p-6 text-[oklch(98%_0.014_86)] sm:max-w-6xl sm:p-8">
+        <div className="mx-auto rounded-3xl bg-[oklch(31%_0.08_151)] p-6 text-[oklch(98%_0.014_86)] shadow-[0_24px_80px_oklch(42%_0.045_76_/_0.2)] sm:max-w-6xl sm:p-8">
           <Home size={30} className="text-[oklch(84%_0.12_76)]" />
           <h2 className="mt-4 text-3xl font-black tracking-tight">
             พร้อมนัดสำรวจหน้างานหรือยัง
@@ -230,16 +347,4 @@ export default function HomePage() {
       </section>
     </main>
   );
-}
-
-function getStepDetail(index: number) {
-  const details = [
-    "แจ้งประเภทงาน พื้นที่ และแนบรูปหน้างาน",
-    "ทีมงานติดต่อกลับเพื่อนัดเวลาที่สะดวก",
-    "รับใบเสนอราคาพร้อมขอบเขตงานชัดเจน",
-    "เริ่มงานตามคิว พร้อมอัปเดตความคืบหน้า",
-    "ตรวจรับงานและรับคำแนะนำหลังส่งมอบ",
-  ];
-
-  return details[index];
 }

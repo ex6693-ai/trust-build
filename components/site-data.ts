@@ -30,7 +30,6 @@ export const navItems = [
   { href: "/track", label: "ติดตามงาน" },
   { href: "/services", label: "บริการ" },
   { href: "/portfolio", label: "ผลงาน" },
-  { href: "/admin", label: "Admin" },
 ];
 
 export const services = [
